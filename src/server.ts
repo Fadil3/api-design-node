@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 const app = express()
 const port = process.env.PORT || 9999
 const path = require('path')
@@ -11,4 +11,4 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve('src/pages/index.html'))
 })
 
-module.exports = app
+export default app
