@@ -1,14 +1,23 @@
 import express from 'express'
+import router from './router'
+import morgan from 'morgan'
+
 const app = express()
+
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static('static'))
+
 const port = process.env.PORT || 9999
 const path = require('path')
-
-app.use(express.static('static'))
 
 app.get('/', (req, res) => {
   res.status(200)
   // res.json({ message: 'Hello' })
   res.sendFile(path.resolve('src/pages/index.html'))
 })
+
+app.use('/api', router)
 
 export default app
