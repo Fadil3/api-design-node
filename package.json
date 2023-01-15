@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "set STAGE=testing&& jest",
-    "dev": "set STAGE=local&& nodemon src/index.ts",
-    "start": "set STAGE=production&& nodemon dist/index.js",
+    "test": "cross-env STAGE=testing jest",
+    "dev": "cross-env STAGE=local nodemon src/index.ts",
+    "start": "cross-env STAGE=production nodemon dist/index.js",
     "build": "tsc -p tsconfig.json"
   },
   "keywords": [],
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.20",
     "prisma": "^4.6.1",
     "ts-node": "^10.9.1",
